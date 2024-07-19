@@ -51,5 +51,5 @@ This project includes unit tests for the `ApiService` class, which handles fetch
 To run the tests, use the following command:
 
 ```bash
-flutter test test/product_list_item_test.dart
+flutter test test/product_test_cases.dart
 ```
