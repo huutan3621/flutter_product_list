@@ -1,16 +1,41 @@
-# flutter_product_list
+Flutter Product List
 
-A new Flutter project.
+This project is a Flutter application for displaying and managing a list of products. It includes functionalities such as fetching products from an API, searching products, and managing favorite products.
 
-## Getting Started
+Getting Started
+Prerequisites
+Ensure you have Flutter installed on your machine. You can download Flutter from here.
 
-This project is a starting point for a Flutter application.
+- Installation
+Clone the repository:
 
-A few resources to get you started if this is your first Flutter project:
+git clone <https://github.com/huutan3621/flutter_product_list.git>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Navigate to the project directory:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+cd flutter_product_list
+
+Install the dependencies:
+
+flutter pub get
+
+- Running the Application
+
+To run the application on an emulator or physical device, use the following command:
+
+flutter run
+
+- Running Tests
+This project includes unit tests for the ApiService class, which handles fetching products from the API. The tests ensure that the methods return the expected results.
+
+- Test Cases
+fetchProducts returns a list of products: Tests if the fetchProducts method returns a list of products.
+fetchProductById returns a product: Tests if the fetchProductById method returns a product based on the given ID.
+searchProducts returns a list of products: Tests if the searchProducts method returns a list of products based on the search query.
+
+- Running the Tests
+To run the tests, use the following command:
+
+flutter test test/product_list_item_test.dart
+
+- Example Test Code in test/product_test_cases.dart

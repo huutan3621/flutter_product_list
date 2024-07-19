@@ -122,18 +122,23 @@ class ProductProvider with ChangeNotifier {
     });
   }
 
-  Future<void> toggleFavorite(Product product) async {
+  Future<void> toggleFavorite(Product? product) async {
+    if (product == null) {
+      debugPrint('No product provided for toggling favorite');
+      return; // Exit early if no product is provided
+    }
+
     final isFav = _favorites.any((p) => p.id == product.id);
     debugPrint(
         'Toggling favorite for product id: ${product.id}. Currently isFav: $isFav');
 
     try {
       if (isFav) {
-        await _databaseService.removeFavorite(product.id);
+        await _databaseService.removeFavorite(product.id ?? 0);
         _favorites.removeWhere((p) => p.id == product.id);
         debugPrint('Removed from favorites');
       } else {
-        await _databaseService.addFavorite(product.id);
+        await _databaseService.addFavorite(product.id ?? 0);
         _favorites.add(product);
         debugPrint('Added to favorites');
       }
@@ -144,8 +149,8 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  bool isFavorite(Product product) {
-    return _favorites.any((item) => item.id == product.id);
+  bool isFavorite(Product? product) {
+    return _favorites.any((item) => item.id == product?.id);
   }
 
   void _showEmptyResultDialog() {

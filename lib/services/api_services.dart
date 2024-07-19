@@ -1,15 +1,19 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/foundation.dart'; // Import for debugPrint
+import 'package:flutter/foundation.dart';
 import '../models/product.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://dummyjson.com';
+  final String baseUrl;
+  final http.Client client;
+
+  ApiService({this.baseUrl = 'https://dummyjson.com', http.Client? client})
+      : client = client ?? http.Client();
 
   Future<List<Product>> fetchProducts(int skip) async {
     try {
       final response =
-          await http.get(Uri.parse('$baseUrl/products?limit=20&skip=$skip'));
+          await client.get(Uri.parse('$baseUrl/products?limit=20&skip=$skip'));
       if (response.statusCode == 200) {
         final data = json.decode(response.body) as Map<String, dynamic>;
         final products = (data['products'] as List)
@@ -29,7 +33,7 @@ class ApiService {
   Future<List<Product>> searchProducts(String query) async {
     try {
       final response =
-          await http.get(Uri.parse('$baseUrl/products/search?q=$query'));
+          await client.get(Uri.parse('$baseUrl/products/search?q=$query'));
       if (response.statusCode == 200) {
         final data = json.decode(response.body) as Map<String, dynamic>;
         final products = (data['products'] as List)
@@ -48,7 +52,7 @@ class ApiService {
 
   Future<Product> fetchProductById(int id) async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/products/$id'));
+      final response = await client.get(Uri.parse('$baseUrl/products/$id'));
       if (response.statusCode == 200) {
         final product = json.decode(response.body);
         return Product.fromJson(product);

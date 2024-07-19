@@ -19,7 +19,7 @@ class ProductListItem extends StatelessWidget {
         child: Row(
           children: [
             Image.network(
-              product.thumbnail,
+              product.thumbnail ?? "",
               height: 50,
               width: 50,
               fit: BoxFit.cover,
@@ -30,7 +30,7 @@ class ProductListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.title,
+                    product.title ?? "",
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),
