@@ -11,17 +11,17 @@ Clone the repository:
 
 git clone <https://github.com/huutan3621/flutter_product_list.git>
 
-Navigate to the project directory:
+- Navigate to the project directory:
 
 cd flutter_product_list
 
-Install the dependencies:
+- Install the dependencies:
 
 flutter pub get
 
 - Running the Application
 
-To run the application on an emulator or physical device, use the following command:
+- To run the application on an emulator or physical device, use the following command:
 
 flutter run
 
